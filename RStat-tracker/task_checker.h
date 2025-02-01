@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
 
 
 /**
@@ -12,26 +14,28 @@
  * @param vectors Actual arugment vectors passed through input.
  * @return int The task number to be used.
  */
-int task_checker(int argument, char *vectors[]) { 
+int task_checker(char *task, char*name, int size) { 
 
-    int valid_task = 0; // boolean for if task can be passed to the compiler
-    int task_num = 0; // pointer for the number of task but as a char because it is passed as a char
-
- 
-    for (int i = 1; i < argument; i++ ) { // make sure that the argument task was passed
-        if (sscanf(vectors[1], "--TASK=%d", &task_num) == 1) {
-            valid_task = 1; 
-            break; 
-        }
-    }
-
-    if (!valid_task || (task_num <= 0 || task_num > 6)) { // if task is not in valid range
-        printf("\ninvalid argument/task \n");  // ask for better paramaters
+    if(strcmp(task, "help") ==0){
+        printf("\nHelp !!! \n");
+        printf("--------\n");
+        printf("Input: \"Argument\"\n\n"); 
+        printf("List of Arugments \n----------------\n");
+        printf("Add -- [add entry to activity table]\nDisplay -- [Prints current actvity table data]\n");
+        printf("BestR -- [Returns Roomie with most activitiy entries (-beers consumed)]\n");
         return 0; 
-    } else { 
-        printf("\nTask %d initiated\n", task_num); // if task is in range return task initaned and task number to pass 
-        return task_num; 
+    } else if(strcmp(task, "Add") ==0) {
+        return 1; 
+    } else if(strcmp(task, "Display") ==0) {
+        return 2; 
+    } else if(strcmp(task, "BestR") ==0) {
+        return 3; 
+    } else {
+        printf("\nPlease enter a valid task. Enter \"help\" for extra documentation \n");
+        return 0; 
     }
 
+    return 0;
 }
+
 

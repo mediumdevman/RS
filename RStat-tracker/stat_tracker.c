@@ -1,25 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "task_checker.h" 
+#include "input.h" 
 
+#define MAX_DATA 3
 
-#define MAX_DATA 1000
-
-/**
- * Struct: CurricularData
- * ----------------------
- * @brief Represents a row from the a1-data-curricular.csv file.
- */
-typedef struct {
-    char roomie[50];           // Maps to the "name" column
-    int dishes;       // Maps to the "dishes" column
-    int sweep_vacuuming;          // Maps to the "sweep_vacuuming" column
-    int towels;   // Maps to the "towels" column
-    int garbage;          // Maps to the "garbage" column
-    int recycling;          // Maps to the "recycling" column
-    int beers;          // Maps to the "beers" column
-} RoomieData;
 
 /**
  * Function: read_csv_file
@@ -84,6 +69,11 @@ void print_data(const RoomieData data[], int size) {
 }
 
 
+void file_modifier(int task_num, char *name) {
+    if (task_num == 1) { 
+    }
+}
+
 /**
  * Function: main
  * --------------
@@ -93,16 +83,26 @@ void print_data(const RoomieData data[], int size) {
  */
 int main(int arguments, char *argv[]) {
 
-    //int task = task_checker(arguments, argv); 
-    char *filename = "master.csv"; 
-
-    RoomieData data[MAX_DATA];  // Array to hold all rows from the CSV
-
+    char *filename = "master.csv"; // master data file. cannot be changed by user
+    RoomieData data[MAX_DATA];  // array of data for use by sorter
+     
     int roomie_data_refined = read_file(filename, data); 
-    print_data(data, roomie_data_refined);
+    //print_data(data, roomie_data_refined);
 
+    char name[50];
+    user_input(name, sizeof(name));  // Pass the array
+    user_exist(name, MAX_DATA, data);
 
-    //print_data(CSV_data, num_records_csv);
+    int task_num = 0; 
+
+    if (user_exist(name, sizeof(name), data) == 1) {
+        char task[50];
+        task_num = task_asker(task, sizeof(task), name);
+    } else {
+        printf("\nSorry %s does not live here \n", name); 
+    }
+
+    file_modifier(task_num, name); 
 
     return 0;
 }
