@@ -8,11 +8,13 @@
 /**
  * Function: task_checker
  * --------------------
- * @brief Detetects the argument and task type passed through the input.
+ * @brief Checks if user that was inputed into cosole exsits in current state of master.csv
  *
- * @param argument specific number of arguments passed through main.
- * @param vectors Actual arugment vectors passed through input.
- * @return int The task number to be used.
+ * @param task The task inputed into console by user
+ * @param size size of character name, decided globally in stat_tracker.c
+ * @param name name of roomie, just used for presentation and clairt
+ * 
+ * @return int (0 to 3) each value represents a different executable except for 0 which means invalid task
  */
 int task_checker(char *task, char*name, int size) { 
 

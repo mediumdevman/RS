@@ -12,3 +12,9 @@
 
 That's all for now,
 Jack
+
+## Version 0.2.2
+> Added documentation for all functions in all files. Should be easier to understand what the hell I am rambling on about! 
+
+That's all for now,
+Jack

@@ -5,6 +5,13 @@
 #include <string.h>
 #include <mach-o/dyld.h>  // macOS-specific header for getting the executable path
 
+
+/**
+ * Function: main
+ * -----------------------
+ * @brief Launches entire appllication. Takes care of permission changes and routing for master file and 
+ * run.sh execution to work for all users
+ */
 int main() {
     char exe_path[PATH_MAX];  // Buffer to store executable path
     uint32_t size = sizeof(exe_path);
