@@ -63,5 +63,55 @@ int task_asker(char *task, int size, char *name) {
     }
 
     return valid; 
-    
+
+}
+
+int duty_define(char *duty, int size, char *name) { 
+        int valid_duty = 0; 
+        printf("\nWhat did you do to today, %s? \n", name);
+        while (!valid_duty) {
+            printf("\nInput: ");
+            fgets(duty, 50, stdin);  // Safer input handling
+            duty[strcspn(duty, "\n")] = '\0';  // Remove trailing newline
+            valid_duty = duty_checker(duty, name, size);
+    }
+
+    return valid_duty;
+}
+
+int times_complete(char *name) {
+    int valid_amount = 0; 
+    char input[50]; 
+    int success = 0; 
+    printf("\nHow many times did you do that today? \n");
+    while (!success) {
+        printf("\nInput: ");
+        fgets(input, 50, stdin);  // Safer input handling
+        if (sscanf(input, "%d", &valid_amount) == 1) {
+            success = 1; 
+        }
+    }
+
+    return valid_amount;
+
+}
+
+int times_checker(int num, char *name) {
+    int success = 0; 
+    char statement[50]; 
+        printf("\nYou would like to report that you did that duty %d times (Y or N)\n", num);
+        while (!success) {
+            printf("\nInput: ");
+            fgets(statement, 50, stdin);  // Safer input handling
+            statement[strcspn(statement, "\n")] = '\0';  // Remove trailing newline
+            if (strcmp(statement, "Y") == 0 ) { 
+                success = num; 
+            } else {
+                printf("\nPlease input the correct value: \n");
+                success = times_complete(name); 
+            }
+            
+        } 
+    return success;
+
 }

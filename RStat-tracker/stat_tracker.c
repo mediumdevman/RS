@@ -70,7 +70,25 @@ void print_data(const RoomieData data[], int size) {
 
 
 void file_modifier(int task_num, char *name) {
+   
+    /*
+    Below are the varaibles that the program keeps in mind while reassigning data
+    */
+    
+    int num = 0; 
+    int times_comp = 0; 
+    char duty[50];
+
+    /* 
+    Below is all the task handiling for what needs to be changed in the 
+    .csv file. 
+    */
+
     if (task_num == 1) { 
+        num = duty_define(duty, sizeof(duty), name); 
+        times_comp = times_complete(name); 
+        times_comp = times_checker(times_comp, name); 
+        printf("\n<-- RECAP -->\n\nRoomie: %s \nTask Amount: %d \n\n<-- RECAP -->\n\n", name, times_comp); 
     }
 }
 
