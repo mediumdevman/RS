@@ -18,3 +18,13 @@ Jack
 
 That's all for now,
 Jack
+
+## Version 0.2.3
+> Bigger day today both for the code and me perosnally... I won't bore you but I had a bit of a run in with BCHydro and a billing issue, I missed a mandatory co-op seminar (my advisor let me off the hook, but still stresfull) and I have two midterms over the next two days. I should probably be studying for those, but this is way more interesting lol. Anyways V0.2.3 mainly includes more functionaly for the program. With the addition of 4 or 5 new fucntions the program now succesfully asks which task youve completed (which corresponds to an int value between 1-5) and how many times you've complete it. If you take a trace through the code you can see how this works, but I am especially proud of the times_checker function which takes a inout of Y or N to make sure you are inouting the data you wanted to. It will give you a second chance if you made a numerical error as well which is very helpful! Below is a list of all the new functions are their inteded purpose:
+- duty_checker (takes a input from user and returns a int value that relates to the task you have selected
+- duty_define (prompts the user to input what duty they did today and then calls duty_checker to validate that task)
+- times_checker (asks the user to confirm if that amount theu inputted is correct)
+- times_complete (prompts user to input how many times they have completed a task) 
+
+That's all for now, I hope for a les sexciting day tomorrow,
+Jack
